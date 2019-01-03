@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import List from './containers/List.js'
 import Home from './containers/Home.js'
 import Mine from './containers/Mine.js'
+import TestRedux from './containers/TestRedux';
 
 import logo from './logo.svg';
 import './App.css';
@@ -37,6 +38,7 @@ class App extends Component {
             </div>
           </Router>
         </div>
+        <TestRedux />
       </div>
     );
   }
