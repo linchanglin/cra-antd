@@ -1,65 +1,42 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import List from './containers/List.js'
+import Home from './containers/Home.js'
+import Mine from './containers/Mine.js'
+
 import logo from './logo.svg';
 import './App.css';
 
-import { Button, WhiteSpace, WingBlank  } from 'antd-mobile';
+// import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React111
-          </a>
-
-
-          <WingBlank>
-    <Button>default</Button><WhiteSpace />
-    <Button disabled>default disabled</Button><WhiteSpace />
-
-    <Button type="primary">primary</Button><WhiteSpace />
-    <Button type="primary" disabled>primary disabled</Button><WhiteSpace />
-
-    <Button type="warning">warning</Button><WhiteSpace />
-    <Button type="warning" disabled>warning disabled</Button><WhiteSpace />
-
-    <Button loading>loading button</Button><WhiteSpace />
-    <Button icon="check-circle-o">with icon</Button><WhiteSpace />
-    <Button icon={<img src="https://gw.alipayobjects.com/zos/rmsportal/jBfVSpDwPbitsABtDDlB.svg" alt="" />}>with custom icon</Button><WhiteSpace />
-    <Button icon="check-circle-o" inline size="small" style={{ marginRight: '4px' }}>with icon and inline</Button>
-    <Button icon="check-circle-o" inline size="small">with icon and inline</Button>
-    <WhiteSpace />
-
-    {/* <Button activeStyle={false}>无点击反馈</Button><WhiteSpace /> */}
-    {/* <Button activeStyle={{ backgroundColor: 'red' }}>custom feedback style</Button><WhiteSpace /> */}
-
-    <WhiteSpace />
-    <Button type="primary" inline style={{ marginRight: '4px' }}>inline primary</Button>
-    {/* use `am-button-borderfix`. because Multiple buttons inline arranged, the last one border-right may not display */}
-    <Button type="ghost" inline style={{ marginRight: '4px' }} className="am-button-borderfix">inline ghost</Button>
-
-    <WhiteSpace />
-    <Button type="primary" inline size="small" style={{ marginRight: '4px' }}>primary</Button>
-    <Button type="primary" inline size="small" disabled>primary disabled</Button>
-    <WhiteSpace />
-    <Button type="ghost" inline size="small" style={{ marginRight: '4px' }}>ghost</Button>
-    {/* use `am-button-borderfix`. because Multiple buttons inline arranged, the last one border-right may not display */}
-    <Button type="ghost" inline size="small" className="am-button-borderfix" disabled>ghost disabled</Button>
-  </WingBlank>
-          
-        </header>
-
-        
+          <h2 className='App-title'>Welcome to React Plan</h2>
+        </div>
+        <div className="App-content">
+          {/*路由配置*/}
+          <Router>
+            <div className="content-box">
+              {/*编写导航*/}
+              <ul className="nav">
+                <li><Link to="/">首页</Link></li>
+                <li><Link to="/list">列表页</Link></li>
+                <li><Link to="/mine/mine1">我的页面二级路由</Link></li>
+                {/*link指向二级路由的默认页面*/}
+              </ul>
+              {/*路由匹配*/}
+              <div className="content">
+                <Route exact path="/" component={Home} />
+                <Route path="/list" component={List} />
+                <Route path="/mine" component={Mine} />
+              </div>
+            </div>
+          </Router>
+        </div>
       </div>
     );
   }
