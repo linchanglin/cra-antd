@@ -14,6 +14,10 @@ import './App.css';
 import AnimatedRouter from 'react-animated-router'; //我们的AnimatedRouter组件
 import 'react-animated-router/animate.css'; //引入默认的动画样式定义
 
+
+// import { hashHistory } from 'react-router'
+
+
 class App extends Component {
   render() {
     return (
