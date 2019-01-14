@@ -1,45 +1,36 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import List from './containers/List.js'
-import Home from './containers/Home.js'
-import Mine from './containers/Mine.js'
-import TestRedux from './containers/TestRedux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './containers/home/Home.js'
+import List from './containers/list/List.js'
+import Mine from './containers/mine/Mine.js'
+import TestRedux from './containers/test/TestRedux';
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 // import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+
+
+import AnimatedRouter from 'react-animated-router'; //我们的AnimatedRouter组件
+import 'react-animated-router/animate.css'; //引入默认的动画样式定义
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 className='App-title'>Welcome to React Plan</h2>
-        </div>
-        <div className="App-content">
-          {/*路由配置*/}
-          <Router>
-            <div className="content-box">
-              {/*编写导航*/}
-              <ul className="nav">
-                <li><Link to="/">首页</Link></li>
-                <li><Link to="/list">列表页</Link></li>
-                <li><Link to="/mine/mine1">我的页面二级路由</Link></li>
-                {/*link指向二级路由的默认页面*/}
-              </ul>
-              {/*路由匹配*/}
-              <div className="content">
-                <Route exact path="/" component={Home} />
-                <Route path="/list" component={List} />
-                <Route path="/mine" component={Mine} />
-              </div>
-            </div>
-          </Router>
-        </div>
-        <TestRedux />
-      </div>
+        <Router>
+          {/* <Switch> */}
+          <AnimatedRouter>
+            <Route exact path="/" component={Home} />
+            <Route path="/list" component={List} />
+            <Route path="/mine" component={Mine} />
+            <Route path="/test" component={TestRedux} />
+          </AnimatedRouter>
+
+          {/* </Switch> */}
+        </Router>
+
+      </div >
     );
   }
 }

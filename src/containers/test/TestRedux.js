@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as handlerNumberActions from '../actions/number';
+import * as handlerNumberActions from '../../actions/number';
 
 class TestRedux extends Component {
     textChange(event) {
